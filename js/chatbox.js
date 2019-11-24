@@ -18,7 +18,7 @@ $(document).ready(function(){
     function sendChat() {
         if($('#message').val() === "") return;
         $.post(
-            'sendmessage.php',
+            'php/functions/sendmessage.php',
             {
                 author: name,
                 message: $('#message').val()
@@ -27,6 +27,7 @@ $(document).ready(function(){
             function(data){
 
                 if(data === 'Success'){
+                    lastid ++;
                     var now = new Date();
                     now = now.format("dd/mm/yyyy - HH:MM");
 
@@ -57,3 +58,35 @@ $(document).ready(function(){
 function cls() {
     $('#message').val("");
 }
+
+function actualise(){
+// traitement
+    $.post(
+        'php/functions/getmessage.php',
+        {
+            id: lastid
+        },
+
+        function(data){
+
+            if(data.startsWith("{\"")){
+                data = JSON.parse(data);
+                $('.chatarea').html($('.chatarea').html() + data.message);
+                lastid = data.id;
+                if(data.message.includes("/clear")){
+                    location.reload();
+                }
+            }
+            else if(data === ""){
+            }
+            else{
+                alert(data);
+            }
+
+        },
+        'text'
+    );
+    setTimeout(actualise,2000); /* rappel après 2 secondes = 2000 millisecondes */
+}
+
+actualise();

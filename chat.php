@@ -26,6 +26,6 @@ include(__DIR__.DIRECTORY_SEPARATOR.'php'.DIRECTORY_SEPARATOR.'class'.DIRECTORY_
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/dateformat.js"></script>
-<script>var name = "<?= $_SESSION['pseudo'] ?>"</script>
+<script>var name = "<?= $_SESSION['pseudo'] ?>", lastid = <?= Message::$lastid ?>;</script>
 <script src="js/chatbox.js"></script>
 </html>
