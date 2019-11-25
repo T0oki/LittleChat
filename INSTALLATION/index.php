@@ -8,14 +8,21 @@ HTML;
 
     exit;
 }
-
+if (!mkdir('../config/', 0777, true)) {
+    echo <<<HTML
+<h1>Erreur Permissions</h1>
+<ul>Donnez les permission d'édition sur le dossier racine</ul>
+<p>example : (linux) chmod -R 777 (fichier)</p>
+HTML;
+exit;
+}
 if(!is_writable(__DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."config")){
     echo <<<HTML
 <h1>Erreur Permissions</h1>
 <ul>Donnez les permission d'édition sur le dossier config</ul>
 <p>example : (linux) chmod -R 777 (fichier)</p>
 HTML;
-    exit;
+exit;
 }
 ?>
 
