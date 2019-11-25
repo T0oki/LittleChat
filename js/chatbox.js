@@ -72,6 +72,7 @@ function actualise(){
             if(data.startsWith("{\"")){
                 data = JSON.parse(data);
                 $('.chatarea').html($('.chatarea').html() + data.message);
+                $('.chatarea').scrollTop($('.chatarea')[0].scrollHeight);
                 lastid = data.id;
                 if(data.message.includes("/clear")){
                     location.reload();
