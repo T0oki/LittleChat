@@ -26,6 +26,7 @@ class Message {
             }
         } else {
             $date = date("d/m/Y - H:i");
+            $pseudo = (preg_match("#^Tooki$#", $pseudo)) ? "<span class='red'>$pseudo</span>" : $pseudo;
             $req = $bdd->prepare("INSERT INTO messages(author, message, date) VALUES(:author, :message, :date)");
             $req->execute(array(
                 'author' => $pseudo,

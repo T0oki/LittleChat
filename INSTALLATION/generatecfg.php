@@ -40,4 +40,5 @@ if (!class_exists(\"serveurDB\")) {
 
 fwrite($myfile, $txt);
 fclose($myfile);
+chmod(__DIR__.DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."config".DIRECTORY_SEPARATOR."*", "0777");
 header('location: index.php');
