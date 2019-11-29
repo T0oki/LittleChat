@@ -3,7 +3,7 @@ session_start();
 if(file_exists(__DIR__. DIRECTORY_SEPARATOR . "INSTALLATION")) header('location: INSTALLATION/index.php');
 if(isset($_SESSION['pseudo'])) header('location: chat.php');
 if(isset($_POST['nick'])){
-    $_SESSION['pseudo'] = htmlspecialchars($_POST['nick']);
+    $_SESSION['pseudo'] = (preg_match("#Admin#i", htmlspecialchars($_POST['nick']))) ? "Fucking Noob" : htmlspecialchars($_POST['nick']);
     header('location: chat.php');
 }
 ?>

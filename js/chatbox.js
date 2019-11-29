@@ -31,7 +31,7 @@ $(document).ready(function(){
                     var now = new Date();
                     now = now.format("dd/mm/yyyy - HH:MM");
 
-                    $('.chatarea').html($('.chatarea').html() + `<p>[${now}] - <b>${name}</b> : ${$('#message').val()}</p>`);
+                    $('.chatarea').html($('.chatarea').html() + `<p>[${now}] - <b>${name}</b> : ${escapeHtml($('#message').val())}</p>`);
                     $('.chatarea').scrollTop($('.chatarea')[0].scrollHeight)
                     cls();
                 }
@@ -91,3 +91,15 @@ function actualise(){
 }
 
 actualise();
+
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+}

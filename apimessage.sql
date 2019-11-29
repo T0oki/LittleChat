@@ -12,7 +12,7 @@ CREATE TABLE `messages` (
   `date` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 INSERT INTO `messages` (`id`, `author`, `message`, `date`) VALUES
-(1, 'Tooki', '--&gt; /Help ', '24/11/2019 - 18:41');
+(1, 'Admin', 'Type : <i>/Help</i> to display the command list;', '24/11/2019 - 18:41');
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 ALTER TABLE `messages`
